@@ -1,142 +1,214 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk - DAMX STORE</title>
-  <link rel="icon" href="https://files.catbox.moe/b5pfw2.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DAMX Store - List Produk</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #101820;
+      background: #0f0f0f;
       color: #fff;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      padding: 30px 20px;
-      max-width: 600px;
-      margin: auto;
-      text-align: center;
+      padding: 20px;
     }
 
     h1 {
+      text-align: center;
       color: #00ffe7;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .item {
-      background: #1e1e2f;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #00ffe733;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background: #1a1a2e;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 8px #00ffe766;
     }
 
-    .item-name {
-      font-weight: bold;
-    }
-
-    .item-price {
-      color: #00ffe7;
-    }
-
-    .add-btn {
-      background-color: #00ffe7;
-      color: #000;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .add-btn:hover {
-      background-color: #00c4b3;
-    }
-
-    .cart {
-      margin-top: 20px;
-      padding: 15px;
-      background: #1e1e2f;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #00ffe733;
-    }
-
-    .total {
+    .item-title {
       font-size: 1.2rem;
-      margin: 15px 0;
-      color: #00ffe7;
+      color: #fff;
+      margin-bottom: 10px;
     }
 
-    .pay-btn {
-      background-color: #00ffe7;
-      color: #000;
+    .price {
+      color: #ccc;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background: #00ffe7;
       border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
-      font-size: 1rem;
+      padding: 8px 14px;
+      color: #000;
+      border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.3s;
+      transition: 0.2s;
     }
 
-    .pay-btn:hover {
-      background-color: #00c4b3;
+    .btn:hover {
+      background: #0ff;
     }
 
-    .back-link {
-      display: block;
-      margin-top: 25px;
-      text-decoration: none;
-      color: #888;
+    #cart {
+      background: #111;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 30px;
+    }
+
+    #cart ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #cart li {
+      border-bottom: 1px solid #333;
+      padding: 5px 0;
+    }
+
+    #checkout {
+      margin-top: 15px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #333;
+      margin: 30px 0;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Senarai Produk</h1>
+<h1>🛍️ DAMX STORE - LIST PRODUK</h1>
 
-    <div class="item">
-      <span class="item-name">PANEL X</span>
-      <span class="item-price">RM10</span>
-      <button class="add-btn" onclick="addToCart(10)">Tambah</button>
-    </div>
+<!-- ===================== PANEL SECTION ===================== -->
+<h2>📦 PANEL DAMX</h2>
 
-    <div class="item">
-      <span class="item-name">PANEL Y</span>
-      <span class="item-price">RM20</span>
-      <button class="add-btn" onclick="addToCart(20)">Tambah</button>
-    </div>
+<div class="item">
+  <div class="item-title">1GB DATA</div>
+  <div class="price">RM 0.50</div>
+  <button class="btn" onclick="addToCart('Panel 1GB', 0.5)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">UNLI DATA</div>
+  <div class="price">RM 2.50</div>
+  <button class="btn" onclick="addToCart('Panel UNLI', 2.5)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">Reseller Panel</div>
+  <div class="price">RM 5.00</div>
+  <button class="btn" onclick="addToCart('Reseller Panel', 5)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">Admin Panel</div>
+  <div class="price">RM 6.00</div>
+  <button class="btn" onclick="addToCart('Admin Panel', 6)">Add to Cart</button>
+</div>
 
-    <div class="item">
-      <span class="item-name">PAKEJ Z</span>
-      <span class="item-price">RM30</span>
-      <button class="add-btn" onclick="addToCart(30)">Tambah</button>
-    </div>
+<hr>
 
-    <div class="cart">
-      <div class="total">Jumlah: RM<span id="total">0</span></div>
-      <a href="https://damx-payment.vercel.app" id="bayar" class="pay-btn">Bayar Sekarang</a>
-    </div>
+<!-- ===================== SCRIPT TELE ===================== -->
+<h2>🤖 SCRIPT WHATSAPP VIA TELEGRAM</h2>
 
-    <a href="index.html" class="back-link">← Kembali ke Halaman Utama</a>
-  </div>
+<div class="item">
+  <div class="item-title">🀄 MAHJONG - Permanent</div>
+  <div class="price">RM 20</div>
+  <button class="btn" onclick="addToCart('Mahjong Permanent', 20)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">🍥 CIKIWIR - Full Update</div>
+  <div class="price">RM 12</div>
+  <button class="btn" onclick="addToCart('Cikiwir Full Update', 12)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">💠 TREDICT - Reseller</div>
+  <div class="price">RM 40</div>
+  <button class="btn" onclick="addToCart('Tredict Reseller', 40)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">🐉 DRAGON - Reseller</div>
+  <div class="price">RM 15</div>
+  <button class="btn" onclick="addToCart('Dragon Reseller', 15)">Add to Cart</button>
+</div>
 
-  <script>
+<hr>
+
+<!-- ===================== SCRIPT WHATSAPP VIA WA ===================== -->
+<h2>📱 SCRIPT WHATSAPP VIA WA</h2>
+
+<div class="item">
+  <div class="item-title">👑 AMBA CRASH - NO ENC</div>
+  <div class="price">RM 10</div>
+  <button class="btn" onclick="addToCart('Amba Crash NO ENC', 10)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">👺 PSYCHO CRASH - NO ENC</div>
+  <div class="price">RM 10</div>
+  <button class="btn" onclick="addToCart('Psycho Crash NO ENC', 10)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">⚡ NEXSUS - Full Update</div>
+  <div class="price">RM 10</div>
+  <button class="btn" onclick="addToCart('NEXSUS Full Update', 10)">Add to Cart</button>
+</div>
+<div class="item">
+  <div class="item-title">🌪️ VORTEX - Full Update</div>
+  <div class="price">RM 10</div>
+  <button class="btn" onclick="addToCart('VORTEX Full Update', 10)">Add to Cart</button>
+</div>
+
+<!-- ===================== CART ===================== -->
+<div id="cart">
+  <h2>🧾 Troli Pembelian</h2>
+  <ul id="cart-list"></ul>
+  <div id="total">Total: RM 0</div>
+  <button class="btn" id="checkout" onclick="checkout()">Bayar</button>
+</div>
+
+<script>
+  let cart = [];
+  function addToCart(item, price) {
+    cart.push({ item, price });
+    renderCart();
+  }
+
+  function renderCart() {
+    const cartList = document.getElementById('cart-list');
+    cartList.innerHTML = '';
     let total = 0;
-    const totalDisplay = document.getElementById('total');
+    cart.forEach((entry, index) => {
+      const li = document.createElement('li');
+      li.textContent = `${entry.item} - RM ${entry.price.toFixed(2)}`;
+      cartList.appendChild(li);
+      total += entry.price;
+    });
+    document.getElementById('total').textContent = 'Total: RM ' + total.toFixed(2);
+  }
 
-    function addToCart(amount) {
-      total += amount;
-      totalDisplay.textContent = total;
+  function checkout() {
+    if (cart.length === 0) {
+      alert("Troli masih kosong!");
+      return;
     }
-  </script>
+    let message = '*RESIT PEMBELIAN DI DAMXSTORE*\n\n📌*Senarai Pembelian:*\n';
+    let total = 0;
+    cart.forEach((item, i) => {
+      message += `> ${i + 1}. ${item.item} — RM ${item.price}\n`;
+      total += item.price;
+    });
+    message += `\n💰*TOTAL*: RM ${total.toFixed(2)}\n\nTerima kasih kerana support DAMX 🫶`;
+
+    // WhatsApp Damx
+    const phone = '601130538675';
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  }
+</script>
 
 </body>
 </html>
