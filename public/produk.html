@@ -1,231 +1,166 @@
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk DAMX STORE</title>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produk DAMX</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
+    }body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000;
+  color: #fff;
+  padding: 20px;
+}
 
-    body, html {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-      color: white;
-    }
+video.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
 
-    /* Background video */
-    #background-video {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -1;
-      object-fit: cover;
-    }
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
 
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+.kategori-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    .back-btn {
-      position: absolute;
-      left: 15px;
-      top: 15px;
-      background: #222;
-      border: none;
-      color: #fff;
-      padding: 10px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      z-index: 11;
-    }
+.kategori-buttons button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
+}
 
-    .container {
-      padding: 20px;
-      padding-top: 40px;
-    }
+.produk-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
 
-    .produk-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+.produk {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
 
-    .produk {
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+.produk:hover {
+  transform: scale(1.05);
+}
 
-    .produk:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-    }
+.produk h3 {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
 
-    .produk h3 {
-      margin-bottom: 5px;
-      font-size: 18px;
-    }
+.produk p {
+  margin: 5px 0;
+  font-size: 0.95em;
+}
 
-    .produk p {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
+.produk button {
+  background-color: #00cc66;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
 
-    .produk button {
-      background-color: #00d26a;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+.bottom-controls {
+  text-align: center;
+  margin-top: 30px;
+}
 
-    .cart {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 0 10px #000;
-      z-index: 10;
-    }
+.bottom-controls a {
+  margin: 10px;
+  text-decoration: none;
+  background-color: #444;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #fff;
+}
 
-    .cart h4 {
-      margin: 0 0 10px 0;
-    }
-
-    .cart ul {
-      list-style: none;
-      padding: 0;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-
-    .cart ul li {
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    .checkout-btn {
-      margin-top: 10px;
-      display: block;
-      text-align: center;
-      background-color: #00bfff;
-      color: white;
-      padding: 8px;
-      border-radius: 8px;
-      text-decoration: none;
-    }
   </style>
-</head>
-<body>
-  <video autoplay muted loop id="background-video">
-    <source src="https://files.catbox.moe/l7yzj5.mp4" type="video/mp4">
-  </video>
-
-  <header>
-    <button class="back-btn" onclick="history.back()">⬅️</button>
-    Produk DAMX STORE
-  </header>
-
-  <div class="container">
-    <div class="produk-list" id="produk-list"></div>
-  </div>
-
-  <div class="cart" id="cart">
-    <h4>🛒 Troli</h4>
-    <ul id="cart-items"></ul>
-    <strong id="total-price"></strong><br>
-    <a href="https://damx-payment.vercel.app" class="checkout-btn">Checkout</a>
-  </div>
-
   <script>
-    const produkData = [
-      { nama: "🀄 Mahjong - No Update", harga: 10 },
-      { nama: "🀄 Mahjong - Update 3x", harga: 14 },
-      { nama: "🀄 Mahjong - Permanent Update", harga: 20 },
-      { nama: "🍥 Cikiwir - No Update", harga: 7 },
-      { nama: "🍥 Cikiwir - Full Update", harga: 12 },
-      { nama: "💠 Tredict - Full Update", harga: 30 },
-      { nama: "💠 Tredict - Reseller", harga: 40 },
-      { nama: "⚡ Zeus - No Update", harga: 11 },
-      { nama: "⚡ Zeus - Update 3x", harga: 15 },
-      { nama: "⚡ Zeus - Permanent", harga: 25 },
-      { nama: "🐉 Dragon - No Update", harga: 4 },
-      { nama: "🐉 Dragon - Update 5x", harga: 6 },
-      { nama: "🐉 Dragon - Update 7x", harga: 7 },
-      { nama: "🐉 Dragon - Permanent", harga: 10 },
-      { nama: "🐉 Dragon - Reseller", harga: 15 },
-      { nama: "👑 Amba Crash ENC", harga: 7 },
-      { nama: "👑 Amba Crash NO ENC", harga: 10 },
-      { nama: "👑 Amba Crash Reseller", harga: 15 },
-      { nama: "👺 Psycho Crash NO ENC", harga: 10 },
-      { nama: "👺 Psycho Crash Reseller", harga: 15 },
-      { nama: "⚡ Nexsus NO UP", harga: 7 },
-      { nama: "⚡ Nexsus FULL UP", harga: 10 },
-      { nama: "🌪️ Vortex NO UP", harga: 5 },
-      { nama: "🌪️ Vortex FULL UP", harga: 10 },
-      { nama: "📶 1GB", harga: 0.5 },
-      { nama: "📶 5GB", harga: 1.0 },
-      { nama: "📶 7GB", harga: 1.5 },
-      { nama: "📶 8GB", harga: 1.6 },
-      { nama: "📶 9GB", harga: 1.8 },
-      { nama: "📶 10GB", harga: 2.0 },
-      { nama: "🚀 UNLI", harga: 2.5 },
-      { nama: "👤 Reseller Panel", harga: 5.0 },
-      { nama: "🛡️ Admin Panel", harga: 6.0 },
-      { nama: "📱 Script WhatsApp via Tele", harga: 8.0 },
-      { nama: "📱 Script WhatsApp via WA", harga: 8.0 },
-      { nama: "💻 Panel", harga: 12.0 }
-    ];
-
-    const produkList = document.getElementById("produk-list");
-    const cartItems = document.getElementById("cart-items");
-    const totalPrice = document.getElementById("total-price");
-    let cart = [];
-
-    function updateCart() {
-      cartItems.innerHTML = "";
-      let total = 0;
-      cart.forEach(item => {
-        total += item.harga;
-        const li = document.createElement("li");
-        li.textContent = `${item.nama} - RM ${item.harga}`;
-        cartItems.appendChild(li);
+    function filterKategori(kategori) {
+      const produkCards = document.querySelectorAll(".produk");
+      produkCards.forEach(card => {
+        if (kategori === 'semua' || card.classList.contains(kategori)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
       });
-      totalPrice.textContent = `Jumlah: RM ${total.toFixed(2)}`;
-    }
-
-    produkData.forEach(produk => {
-      const div = document.createElement("div");
-      div.className = "produk";
-      div.innerHTML = `<h3>${produk.nama}</h3><p>RM ${produk.harga}</p><button onclick='addToCart("${produk.nama}", ${produk.harga})'>Add to Cart</button>`;
-      produkList.appendChild(div);
-    });
-
-    function addToCart(nama, harga) {
-      cart.push({ nama, harga });
-      updateCart();
     }
   </script>
-</body>
+</head><body>
+  <video autoplay loop muted class="bg-video">
+    <source src="https://files.catbox.moe/l7yzj5.mp4" type="video/mp4">
+  </video>  <h1>Produk DAMX Store</h1>  <div class="kategori-buttons">
+    <button onclick="filterKategori('semua')">Semua</button>
+    <button onclick="filterKategori('script')">Script</button>
+    <button onclick="filterKategori('panel')">Panel</button>
+    <button onclick="filterKategori('data')">Data</button>
+  </div>  <div class="produk-container">
+    <!-- Script -->
+    <div class="produk script"><h3>Script WhatsApp via Telegram</h3><p>RM 10</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Script WhatsApp via WA</h3><p>RM 10</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Mahjong - No Update</h3><p>RM 10</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Mahjong - Update 3x</h3><p>RM 14</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Mahjong - Permanent Update</h3><p>RM 20</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Cikiwir - No Update</h3><p>RM 7</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Cikiwir - Full Update</h3><p>RM 12</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Tredict - Full Update</h3><p>RM 30</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Tredict - Reseller</h3><p>RM 40</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Zeus - No Update</h3><p>RM 11</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Zeus - Update 3x</h3><p>RM 15</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Zeus - Permanent</h3><p>RM 25</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Dragon - No Update</h3><p>RM 4</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Dragon - Update 5x</h3><p>RM 6</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Dragon - Update 7x</h3><p>RM 7</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Dragon - Permanent</h3><p>RM 10</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Dragon - Reseller</h3><p>RM 15</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Amba Crash ENC</h3><p>RM 7</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Amba Crash NO ENC</h3><p>RM 10</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Amba Crash Reseller</h3><p>RM 15</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Psycho Crash NO ENC</h3><p>RM 10</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Psycho Crash Reseller</h3><p>RM 15</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Nexsus NO UP</h3><p>RM 7</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Nexsus FULL UP</h3><p>RM 10</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Vortex NO UP</h3><p>RM 5</p><button>Add to Cart</button></div>
+    <div class="produk script"><h3>Vortex FULL UP</h3><p>RM 10</p><button>Add to Cart</button></div><!-- Data -->
+<div class="produk data"><h3>Data 1GB</h3><p>RM 0.50</p><button>Add to Cart</button></div>
+<div class="produk data"><h3>Data 5GB</h3><p>RM 1.00</p><button>Add to Cart</button></div>
+<div class="produk data"><h3>Data 7GB</h3><p>RM 1.50</p><button>Add to Cart</button></div>
+<div class="produk data"><h3>Data 8GB</h3><p>RM 1.60</p><button>Add to Cart</button></div>
+<div class="produk data"><h3>Data 9GB</h3><p>RM 1.80</p><button>Add to Cart</button></div>
+<div class="produk data"><h3>Data 10GB</h3><p>RM 2.00</p><button>Add to Cart</button></div>
+<div class="produk data"><h3>UNLI</h3><p>RM 2.50</p><button>Add to Cart</button></div>
+
+<!-- Panel -->
+<div class="produk panel"><h3>Reseller Panel</h3><p>RM 5.00</p><button>Add to Cart</button></div>
+<div class="produk panel"><h3>Admin Panel</h3><p>RM 6.00</p><button>Add to Cart</button></div>
+<div class="produk panel"><h3>Panel WhatsApp</h3><p>RM 5.00</p><button>Add to Cart</button></div>
+
+  </div>  <div class="bottom-controls">
+    <a href="index.html">⬅ Kembali</a>
+    <a href="checkout.html">🛒 Checkout</a>
+    <a href="resit.html">📥 Muat Turun Resit</a>
+  </div></body>
 </html>
