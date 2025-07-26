@@ -78,7 +78,6 @@
       transform: scale(1.05);
     }
 
-    /* Musik & Admin button kanan atas */
     .top-buttons {
       position: fixed;
       top: 10px;
@@ -92,10 +91,11 @@
       background: #000;
       color: #00ffe7;
       border: 2px solid #00ffe7;
-      border-radius: 50%;
-      padding: 10px;
+      border-radius: 10px;
+      padding: 8px 12px;
       cursor: pointer;
       transition: 0.3s;
+      font-size: 16px;
     }
 
     .top-buttons button:hover {
@@ -103,7 +103,6 @@
       color: #000;
     }
 
-    /* Chat popup animasi */
     .chat-popup {
       position: fixed;
       bottom: 20px;
@@ -137,14 +136,10 @@
 </head>
 
 <body>
-  <!-- Butang Atas -->
+  <!-- Butang Kanan Atas -->
   <div class="top-buttons">
-    <button id="playMusicBtn" title="Main/Pause Lagu">
-      <i class="fas fa-music"></i>
-    </button>
-    <button id="chatAdminBtn" title="Hubungi Admin">
-      <i class="fas fa-comment-dots"></i>
-    </button>
+    <button id="playMusicBtn" title="Main/Pause Lagu">🎵 Lagu</button>
+    <button id="chatAdminBtn" title="Hubungi Admin">💬 Admin</button>
   </div>
 
   <!-- Muzik -->
@@ -155,7 +150,7 @@
   <!-- Chat Popup -->
   <div class="chat-popup" id="chatPopup">
     <p>👋 Hai! Klik untuk hubungi admin:</p>
-    <a href="https://t.me/DamxStore_bot" target="_blank" style="color:#00ffe7;text-decoration:underline;">@DamxStore_bot</a>
+    <a href="https://t.me/resitdamx_bot" target="_blank" style="color:#00ffe7;text-decoration:underline;">@resitdamx_bot</a>
   </div>
 
   <div class="container">
