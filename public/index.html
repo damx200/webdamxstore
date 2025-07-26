@@ -4,13 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DAMX STORE</title>
-  <link rel="icon" href="https://files.catbox.moe/b5pfw2.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --main-color: #00ffe7;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -18,225 +12,265 @@
     }
 
     body, html {
-      width: 100%;
       height: 100%;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       color: white;
-      overflow: hidden;
+      overflow-x: hidden;
+      background: #000;
     }
 
-    video#bgVideo {
+    video#bg-video {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      min-width: 100%;
+      min-height: 100%;
       object-fit: cover;
-      z-index: -2;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
       z-index: -1;
     }
 
-    .container {
-      padding: 80px 20px 40px;
-      min-height: 100vh;
+    header {
+      padding: 1rem;
       text-align: center;
-      overflow-y: auto;
-    }
-
-    img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      box-shadow: 0 0 25px var(--main-color);
-    }
-
-    @keyframes glitch {
-      0% { text-shadow: 2px 2px var(--main-color), -2px -2px #000; }
-      50% { text-shadow: -2px -2px var(--main-color), 2px 2px #000; }
-      100% { text-shadow: 2px -2px var(--main-color), -2px 2px #000; }
-    }
-
-    @keyframes float {
-      0%   { transform: translateY(0px); }
-      50%  { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      color: var(--main-color);
-      margin: 25px 0 30px;
-      text-shadow: 0 0 15px var(--main-color);
-      animation: glitch 2s infinite alternate, float 4s ease-in-out infinite;
-    }
-
-    .btn-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 90%;
-      max-width: 300px;
-      margin: auto;
-    }
-
-    .btn-container a {
-      background: rgba(255, 255, 255, 0.08);
-      border: 2px solid var(--main-color);
-      backdrop-filter: blur(10px);
-      color: var(--main-color);
-      padding: 12px;
-      border-radius: 12px;
-      text-decoration: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      font-size: 24px;
       font-weight: bold;
-      transition: 0.3s;
+      color: cyan;
     }
 
-    .btn-container a:hover {
-      background: var(--main-color);
-      color: #000;
-      transform: scale(1.05);
+    .container {
+      padding: 20px;
     }
 
-    .top-buttons {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 10;
+    .kategori {
+      margin-bottom: 20px;
     }
 
-    .top-buttons button {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: #000;
-      color: var(--main-color);
-      border: 2px solid var(--main-color);
-      cursor: pointer;
+    .kategori h2 {
+      margin-bottom: 10px;
+      color: #00ffff;
+      border-bottom: 1px solid cyan;
+    }
+
+    .produk-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .produk {
+      background: rgba(30, 30, 30, 0.85);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 0 10px #00ffff50;
+      transition: transform 0.3s;
+    }
+
+    .produk:hover {
+      transform: translateY(-5px);
+    }
+
+    .produk h3 {
+      margin-bottom: 5px;
       font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 10px var(--main-color);
-      transition: 0.3s;
     }
 
-    .top-buttons button:hover {
-      background-color: var(--main-color);
-      color: #000;
+    .produk p {
+      font-size: 14px;
+      margin-bottom: 10px;
     }
 
-    .chat-popup {
+    .produk button {
+      background-color: #00d26a;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cart {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.85);
-      color: white;
-      border: 2px solid var(--main-color);
-      border-radius: 15px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
       padding: 15px;
-      box-shadow: 0 0 15px var(--main-color);
-      display: none;
-      animation: fadeInUp 0.6s ease;
-      z-index: 10;
+      box-shadow: 0 0 10px #00ffff70;
+      max-width: 300px;
     }
 
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
+    .cart h4 {
+      margin: 0 0 10px 0;
     }
 
-    .chat-popup a {
-      color: var(--main-color);
-      text-decoration: underline;
+    .cart ul {
+      list-style: none;
+      padding: 0;
+      max-height: 200px;
+      overflow-y: auto;
     }
 
-    .credit {
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #aaa;
-      text-shadow: 0 0 5px var(--main-color);
-      animation: float 6s ease-in-out infinite;
+    .cart ul li {
+      font-size: 14px;
+      margin-bottom: 4px;
     }
 
-    @media screen and (max-width: 480px) {
-      h1 { font-size: 2rem; }
-      .btn-container a { font-size: 0.9rem; }
+    .checkout-btn, .download-btn {
+      margin-top: 10px;
+      display: block;
+      background-color: #00bfff;
+      color: white;
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .download-btn {
+      background-color: #6a5acd;
     }
   </style>
 </head>
-
 <body>
-  <!-- Video Background -->
-  <video autoplay muted loop id="bgVideo">
+  <video autoplay muted loop id="bg-video">
     <source src="https://files.catbox.moe/l7yzj5.mp4" type="video/mp4">
   </video>
-  <div class="overlay"></div>
 
-  <!-- Butang Kanan Atas -->
-  <div class="top-buttons">
-    <button id="playMusicBtn" title="Mainkan Lagu 🎵">🎵</button>
-    <button id="chatAdminBtn" title="Hubungi Admin 💬">💬</button>
-  </div>
+  <header>
+    🌌 DAMX STORE — Produk & Panel
+  </header>
 
-  <!-- Muzik -->
-  <audio id="bgMusic" loop>
-    <source src="https://files.catbox.moe/neg70e.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Chat Popup -->
-  <div class="chat-popup" id="chatPopup">
-    <p>👋 Klik untuk hubungi admin:</p>
-    <a href="https://t.me/resitdamx_bot" target="_blank">@resitdamx_bot</a>
-  </div>
-
-  <!-- Kandungan Utama -->
   <div class="container">
-    <img src="https://files.catbox.moe/b5pfw2.jpg" alt="DAMX STORE Logo">
-    <h1>DAMX STORE</h1>
 
-    <div class="btn-container">
-      <a href="https://wa.me/message/6YKOGGYS52AUO1" target="_blank">WhatsApp</a>
-      <a href="https://t.me/ItmeDamx" target="_blank">Telegram</a>
-      <a href="produk.html">🛍️ Produk</a>
-      <a href="https://damx-payment.vercel.app" target="_blank">💸 Payment</a>
-      <a href="https://kisahdamxstore.vercel.app" target="_blank">📖 Kisah DAMX</a>
+    <!-- Kategori 1 -->
+    <div class="kategori">
+      <h2>📱 Script WhatsApp</h2>
+      <div class="produk-list" id="kategori-wa"></div>
     </div>
 
-    <div class="credit">From DAMX STORE</div>
+    <!-- Kategori 2 -->
+    <div class="kategori">
+      <h2>📂 Script & Crash</h2>
+      <div class="produk-list" id="kategori-script"></div>
+    </div>
+
+    <!-- Kategori 3 -->
+    <div class="kategori">
+      <h2>📶 Internet/Data</h2>
+      <div class="produk-list" id="kategori-data"></div>
+    </div>
+
+    <!-- Kategori 4 -->
+    <div class="kategori">
+      <h2>🔐 Panel</h2>
+      <div class="produk-list" id="kategori-panel"></div>
+    </div>
+
+  </div>
+
+  <div class="cart" id="cart">
+    <h4>🛒 Troli</h4>
+    <ul id="cart-items"></ul>
+    <strong id="total-price"></strong><br>
+    <a href="https://damx-payment.vercel.app" class="checkout-btn">Checkout</a>
+    <a href="#" onclick="downloadResit()" class="download-btn">📄 Muat Turun Resit</a>
   </div>
 
   <script>
-    const music = document.getElementById("bgMusic");
-    const playBtn = document.getElementById("playMusicBtn");
-    const chatBtn = document.getElementById("chatAdminBtn");
-    const chatPopup = document.getElementById("chatPopup");
+    const produkData = {
+      wa: [
+        { nama: "Script WhatsApp via Tele", harga: 6 },
+        { nama: "Script WhatsApp via WA", harga: 6 }
+      ],
+      script: [
+        { nama: "🀄 Mahjong - No Update", harga: 10 },
+        { nama: "🀄 Mahjong - Update 3x", harga: 14 },
+        { nama: "🀄 Mahjong - Permanent Update", harga: 20 },
+        { nama: "🍥 Cikiwir - No Update", harga: 7 },
+        { nama: "🍥 Cikiwir - Full Update", harga: 12 },
+        { nama: "💠 Tredict - Full Update", harga: 30 },
+        { nama: "💠 Tredict - Reseller", harga: 40 },
+        { nama: "⚡ Zeus - No Update", harga: 11 },
+        { nama: "⚡ Zeus - Update 3x", harga: 15 },
+        { nama: "⚡ Zeus - Permanent", harga: 25 },
+        { nama: "👑 Amba Crash ENC", harga: 7 },
+        { nama: "👑 Amba Crash NO ENC", harga: 10 },
+        { nama: "👑 Amba Crash Reseller", harga: 15 },
+        { nama: "👺 Psycho Crash NO ENC", harga: 10 },
+        { nama: "👺 Psycho Crash Reseller", harga: 15 },
+        { nama: "⚡ Nexsus NO UP", harga: 7 },
+        { nama: "⚡ Nexsus FULL UP", harga: 10 },
+        { nama: "🌪️ Vortex NO UP", harga: 5 },
+        { nama: "🌪️ Vortex FULL UP", harga: 10 }
+      ],
+      data: [
+        { nama: "📶 1GB", harga: 0.5 },
+        { nama: "📶 5GB", harga: 1.0 },
+        { nama: "📶 7GB", harga: 1.5 },
+        { nama: "📶 8GB", harga: 1.6 },
+        { nama: "📶 9GB", harga: 1.8 },
+        { nama: "📶 10GB", harga: 2.0 },
+        { nama: "🚀 UNLI", harga: 2.5 }
+      ],
+      panel: [
+        { nama: "👤 Reseller Panel", harga: 5.0 },
+        { nama: "🛡️ Admin Panel", harga: 6.0 }
+      ]
+    };
 
-    let musicPlaying = false;
-    playBtn.addEventListener("click", () => {
-      if (!musicPlaying) {
-        music.play();
-        musicPlaying = true;
-      } else {
-        music.pause();
-        musicPlaying = false;
-      }
-    });
+    let cart = [];
 
-    chatBtn.addEventListener("click", () => {
-      chatPopup.style.display = chatPopup.style.display === "none" ? "block" : "none";
-    });
+    function renderProduk(kategori, idTarget) {
+      const target = document.getElementById(idTarget);
+      produkData[kategori].forEach(p => {
+        const div = document.createElement("div");
+        div.className = "produk";
+        div.innerHTML = `<h3>${p.nama}</h3><p>RM ${p.harga.toFixed(2)}</p><button onclick='addToCart("${p.nama}", ${p.harga})'>Add to Cart</button>`;
+        target.appendChild(div);
+      });
+    }
+
+    renderProduk("wa", "kategori-wa");
+    renderProduk("script", "kategori-script");
+    renderProduk("data", "kategori-data");
+    renderProduk("panel", "kategori-panel");
+
+    function updateCart() {
+      const cartItems = document.getElementById("cart-items");
+      const totalPrice = document.getElementById("total-price");
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach(item => {
+        total += item.harga;
+        const li = document.createElement("li");
+        li.textContent = `${item.nama} - RM ${item.harga}`;
+        cartItems.appendChild(li);
+      });
+      totalPrice.textContent = `Jumlah: RM ${total.toFixed(2)}`;
+    }
+
+    function addToCart(nama, harga) {
+      cart.push({ nama, harga });
+      updateCart();
+    }
+
+    function downloadResit() {
+      let text = "*RESIT PEMBELIAN DAMX STORE*\n\n";
+      cart.forEach(item => {
+        text += `- ${item.nama} | RM ${item.harga}\n`;
+      });
+      let total = cart.reduce((acc, item) => acc + item.harga, 0);
+      text += `\nJumlah: RM ${total.toFixed(2)}\n\nTerima kasih sokong DAMX STORE ❤️`;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "resit_damxstore.txt";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
   </script>
 </body>
 </html>
