@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    /* Preloader */
     #preloader {
       background: #000 url('https://i.gifer.com/ZZ5H.gif') no-repeat center center;
       background-size: 80px;
@@ -48,6 +47,40 @@
       padding: 40px 20px;
       min-height: 100vh;
       justify-content: center;
+      position: relative;
+    }
+
+    .top-right-buttons {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .top-right-buttons a,
+    .top-right-buttons button {
+      background-color: #00ffe71a;
+      border: 1px solid #00ffe7;
+      border-radius: 8px;
+      padding: 10px;
+      color: #00ffe7;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .top-right-buttons a:hover,
+    .top-right-buttons button:hover {
+      background-color: #00ffe7;
+      color: #000;
+      transform: scale(1.1);
     }
 
     img {
@@ -73,7 +106,7 @@
       max-width: 300px;
     }
 
-    .btn-container a, .btn-container button {
+    .btn-container a {
       background-color: transparent;
       color: #00ffe7;
       border: 2px solid #00ffe7;
@@ -86,32 +119,35 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      cursor: pointer;
-      font-size: 1rem;
     }
 
-    .btn-container a:hover, .btn-container button:hover {
+    .btn-container a:hover {
       background-color: #00ffe7;
       color: #000;
       transform: scale(1.05);
     }
 
-    .btn-container a i, .btn-container button i {
+    .btn-container a i {
       font-size: 1.2rem;
+    }
+
+    .credit {
+      margin-top: 30px;
+      color: #00ffe7;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
 
     @media screen and (max-width: 480px) {
       h1 {
         font-size: 2rem;
       }
-
       .btn-container a {
         font-size: 0.95rem;
       }
     }
   </style>
 </head>
-
 <body>
 
   <!-- Preloader -->
@@ -122,8 +158,11 @@
     });
   </script>
 
-  <!-- AUDIO -->
-  <audio id="bg-music" src="https://files.catbox.moe/neg70e.mp3" loop></audio>
+  <!-- Butang kanan atas -->
+  <div class="top-right-buttons">
+    <button id="music-toggle"><i class="fas fa-music"></i></button>
+    <a href="http://t.me/DamxStore_bot" target="_blank"><i class="fas fa-robot"></i></a>
+  </div>
 
   <div class="container">
     <img src="https://files.catbox.moe/b5pfw2.jpg" alt="DAMX STORE Logo">
@@ -145,17 +184,15 @@
       <a href="https://kisahdamxstore.vercel.app" target="_blank">
         <i class="fas fa-book"></i> Kisah DAMX
       </a>
-
-      <!-- BUTTON LAGU -->
-      <button id="music-toggle"><i class="fas fa-music"></i> Bunyi Muzik</button>
-
-      <!-- BUTTON HUBUNGI ADMIN BOT -->
-      <a href="https://t.me/DAMXBOT?start=hubungi_admin" target="_blank">
-        <i class="fas fa-robot"></i> Hubungi Admin (Bot)
-      </a>
     </div>
+
+    <div class="credit">By DAMX STORE</div>
   </div>
 
+  <!-- Audio -->
+  <audio id="bg-music" src="https://files.catbox.moe/neg70e.mp3" loop></audio>
+
+  <!-- Skrip Lagu -->
   <script>
     const music = document.getElementById("bg-music");
     const toggleBtn = document.getElementById("music-toggle");
@@ -164,20 +201,19 @@
     toggleBtn.addEventListener("click", () => {
       if (!playing) {
         music.play();
-        toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Henti Muzik';
+        toggleBtn.innerHTML = '<i class="fas fa-pause"></i>';
       } else {
         music.pause();
-        toggleBtn.innerHTML = '<i class="fas fa-music"></i> Bunyi Muzik';
+        toggleBtn.innerHTML = '<i class="fas fa-music"></i>';
       }
       playing = !playing;
     });
 
-    // Optional: auto play on click somewhere
     window.addEventListener("click", () => {
       if (!playing) {
         music.play().then(() => {
           playing = true;
-          toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Henti Muzik';
+          toggleBtn.innerHTML = '<i class="fas fa-pause"></i>';
         }).catch(() => {});
       }
     }, { once: true });
