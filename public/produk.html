@@ -1,214 +1,162 @@
-<!DOCTYPE html>
-<html lang="ms">
+<!DOCTYPE html><html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DAMX Store - List Produk</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAMX STORE</title>
   <style>
     body {
-      background: #0f0f0f;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
       margin: 0;
-      padding: 20px;
+      padding: 0;
     }
-
-    h1 {
-      text-align: center;
-      color: #00ffe7;
-      margin-bottom: 30px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em;
+      background-color: #222;
     }
-
-    .item {
-      background: #1a1a2e;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 8px #00ffe766;
+    .action-btns {
+      display: flex;
+      gap: 10px;
     }
-
-    .item-title {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      color: #ccc;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      background: #00ffe7;
+    .action-btns button {
       border: none;
-      padding: 8px 14px;
-      color: #000;
-      border-radius: 25px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
       cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
     }
-
-    .btn:hover {
-      background: #0ff;
+    .section {
+      padding: 1em;
     }
-
-    #cart {
-      background: #111;
-      padding: 15px;
-      border-radius: 12px;
-      margin-top: 30px;
+    .product {
+      background: #222;
+      padding: 1em;
+      margin-bottom: 1em;
+      border-radius: 10px;
     }
-
-    #cart ul {
-      list-style: none;
-      padding-left: 0;
+    .cart {
+      background: #333;
+      padding: 1em;
+      margin-top: 2em;
+      border-radius: 10px;
     }
-
-    #cart li {
-      border-bottom: 1px solid #333;
-      padding: 5px 0;
+    .resit {
+      background: #1d1d1d;
+      padding: 1em;
+      margin-top: 2em;
+      border-radius: 10px;
+      white-space: pre-line;
     }
-
-    #checkout {
-      margin-top: 15px;
+    footer {
+      text-align: center;
+      padding: 1em;
+      color: #aaa;
     }
-
-    hr {
-      border: none;
-      border-top: 1px solid #333;
-      margin: 30px 0;
+    input[type="file"] {
+      background: #fff;
+      color: #000;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-
-<h1>🛍️ DAMX STORE - LIST PRODUK</h1>
-
-<!-- ===================== PANEL SECTION ===================== -->
-<h2>📦 PANEL DAMX</h2>
-
-<div class="item">
-  <div class="item-title">1GB DATA</div>
-  <div class="price">RM 0.50</div>
-  <button class="btn" onclick="addToCart('Panel 1GB', 0.5)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">UNLI DATA</div>
-  <div class="price">RM 2.50</div>
-  <button class="btn" onclick="addToCart('Panel UNLI', 2.5)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">Reseller Panel</div>
-  <div class="price">RM 5.00</div>
-  <button class="btn" onclick="addToCart('Reseller Panel', 5)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">Admin Panel</div>
-  <div class="price">RM 6.00</div>
-  <button class="btn" onclick="addToCart('Admin Panel', 6)">Add to Cart</button>
-</div>
-
-<hr>
-
-<!-- ===================== SCRIPT TELE ===================== -->
-<h2>🤖 SCRIPT WHATSAPP VIA TELEGRAM</h2>
-
-<div class="item">
-  <div class="item-title">🀄 MAHJONG - Permanent</div>
-  <div class="price">RM 20</div>
-  <button class="btn" onclick="addToCart('Mahjong Permanent', 20)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">🍥 CIKIWIR - Full Update</div>
-  <div class="price">RM 12</div>
-  <button class="btn" onclick="addToCart('Cikiwir Full Update', 12)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">💠 TREDICT - Reseller</div>
-  <div class="price">RM 40</div>
-  <button class="btn" onclick="addToCart('Tredict Reseller', 40)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">🐉 DRAGON - Reseller</div>
-  <div class="price">RM 15</div>
-  <button class="btn" onclick="addToCart('Dragon Reseller', 15)">Add to Cart</button>
+  <header>
+    <h1>DAMX STORE</h1>
+    <div class="action-btns">
+      <button onclick="toggleSong()">🎵</button>
+      <button onclick="window.open('https://t.me/DamxStore_bot','_blank')">💬</button>
+    </div>
+    <audio id="bgMusic" src="https://files.catbox.moe/neg70e.mp3" loop></audio>
+  </header>  <div class="section">
+    <h2>📦 Produk</h2>
+    <div class="product">
+      <p><b>🀄 MAHJONG</b> — RM10 (No Update)</p>
+      <button onclick="addToCart('MAHJONG', 10)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <p><b>🐉 DRAGON</b> — RM7 (Update 7x)</p>
+      <button onclick="addToCart('DRAGON', 7)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <p><b>⚡ NEXSUS</b> — RM10 (Full Update)</p>
+      <button onclick="addToCart('NEXSUS', 10)">Add to Cart</button>
+    </div>
+    <div class="product">
+      <p><b>📶 PANEL 5GB</b> — RM1.00</p>
+      <button onclick="addToCart('PANEL 5GB', 1.00)">Add to Cart</button>
+    </div><div class="cart">
+  <h3>🛒 Cart</h3>
+  <ul id="cartList"></ul>
+  <p><b>Total:</b> RM <span id="totalAmount">0</span></p>
+  <button onclick="checkout()">Checkout</button>
 </div>
 
-<hr>
-
-<!-- ===================== SCRIPT WHATSAPP VIA WA ===================== -->
-<h2>📱 SCRIPT WHATSAPP VIA WA</h2>
-
-<div class="item">
-  <div class="item-title">👑 AMBA CRASH - NO ENC</div>
-  <div class="price">RM 10</div>
-  <button class="btn" onclick="addToCart('Amba Crash NO ENC', 10)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">👺 PSYCHO CRASH - NO ENC</div>
-  <div class="price">RM 10</div>
-  <button class="btn" onclick="addToCart('Psycho Crash NO ENC', 10)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">⚡ NEXSUS - Full Update</div>
-  <div class="price">RM 10</div>
-  <button class="btn" onclick="addToCart('NEXSUS Full Update', 10)">Add to Cart</button>
-</div>
-<div class="item">
-  <div class="item-title">🌪️ VORTEX - Full Update</div>
-  <div class="price">RM 10</div>
-  <button class="btn" onclick="addToCart('VORTEX Full Update', 10)">Add to Cart</button>
+<div class="resit" id="resitSection" style="display:none">
+  <h3>🧾 Resit Pembelian</h3>
+  <div id="resitContent"></div>
+  <br>
+  <input type="file" id="buktiBayar">
+  <button onclick="hantarKeTelegram()">Hantar ke Telegram</button>
 </div>
 
-<!-- ===================== CART ===================== -->
-<div id="cart">
-  <h2>🧾 Troli Pembelian</h2>
-  <ul id="cart-list"></ul>
-  <div id="total">Total: RM 0</div>
-  <button class="btn" id="checkout" onclick="checkout()">Bayar</button>
-</div>
-
-<script>
-  let cart = [];
-  function addToCart(item, price) {
-    cart.push({ item, price });
-    renderCart();
-  }
-
-  function renderCart() {
-    const cartList = document.getElementById('cart-list');
-    cartList.innerHTML = '';
+  </div>  <footer>
+    From DAMX STORE
+  </footer>  <script>
+    const cart = [];
     let total = 0;
-    cart.forEach((entry, index) => {
-      const li = document.createElement('li');
-      li.textContent = `${entry.item} - RM ${entry.price.toFixed(2)}`;
-      cartList.appendChild(li);
-      total += entry.price;
-    });
-    document.getElementById('total').textContent = 'Total: RM ' + total.toFixed(2);
-  }
 
-  function checkout() {
-    if (cart.length === 0) {
-      alert("Troli masih kosong!");
-      return;
+    function toggleSong() {
+      const audio = document.getElementById('bgMusic');
+      audio.paused ? audio.play() : audio.pause();
     }
-    let message = '*RESIT PEMBELIAN DI DAMXSTORE*\n\n📌*Senarai Pembelian:*\n';
-    let total = 0;
-    cart.forEach((item, i) => {
-      message += `> ${i + 1}. ${item.item} — RM ${item.price}\n`;
-      total += item.price;
-    });
-    message += `\n💰*TOTAL*: RM ${total.toFixed(2)}\n\nTerima kasih kerana support DAMX 🫶`;
 
-    // WhatsApp Damx
-    const phone = '601130538675';
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-  }
-</script>
+    function addToCart(item, price) {
+      cart.push({item, price});
+      total += price;
+      updateCart();
+    }
 
-</body>
+    function updateCart() {
+      const list = document.getElementById('cartList');
+      list.innerHTML = '';
+      cart.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = `${c.item} - RM${c.price}`;
+        list.appendChild(li);
+      });
+      document.getElementById('totalAmount').textContent = total.toFixed(2);
+    }
+
+    function checkout() {
+      const itemLines = cart.map(c => `> ${c.item} — RM ${c.price}`).join("\n");
+      const resit = `*RESIT PEMBELIAN DI DAMXSTORE*\n\n📌 Senarai:\n${itemLines}\n\n💰 TOTAL: RM ${total.toFixed(2)}\n\nTerima kasih kerana support DAMX 🫶`;
+      document.getElementById('resitContent').textContent = resit;
+      document.getElementById('resitSection').style.display = 'block';
+      window.open('https://damxstorepayment.vercel.app', '_blank');
+    }
+
+    async function hantarKeTelegram() {
+      const token = '7625259435:AAGJPd_zD_v3d252B94qfAqJ-r1wgd_1Vjc';
+      const chatId = '6943312517';
+      const text = document.getElementById('resitContent').textContent;
+      const fileInput = document.getElementById('buktiBayar');
+
+      const formData = new FormData();
+      formData.append('chat_id', chatId);
+      formData.append('caption', text);
+      formData.append('photo', fileInput.files[0]);
+
+      await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, {
+        method: 'POST',
+        body: formData
+      });
+
+      alert("Resit telah dihantar ke Telegram!");
+    }
+  </script></body>
 </html>
