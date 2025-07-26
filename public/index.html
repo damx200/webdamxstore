@@ -11,37 +11,45 @@
       --main-color: #00ffe7;
     }
 
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(270deg, #0f0f0f, #101820, #0f0f0f);
-      background-size: 600% 600%;
-      animation: gradientBG 20s ease infinite;
-      color: white;
-      overflow-x: hidden;
+      box-sizing: border-box;
     }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .stars {
-      position: fixed;
+    body, html {
       width: 100%;
       height: 100%;
-      background: transparent url('https://media.giphy.com/media/3o6gbbuLW76jkt8vIc/giphy.gif') repeat;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    video#bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
       z-index: -1;
-      opacity: 0.2;
-      pointer-events: none;
     }
 
     .container {
       padding: 80px 20px 40px;
       min-height: 100vh;
       text-align: center;
+      overflow-y: auto;
     }
 
     img {
@@ -75,7 +83,7 @@
     }
 
     .btn-container a {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       border: 2px solid var(--main-color);
       backdrop-filter: blur(10px);
       color: var(--main-color);
@@ -99,7 +107,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      z-index: 999;
+      z-index: 10;
     }
 
     .top-buttons button {
@@ -135,6 +143,7 @@
       box-shadow: 0 0 15px var(--main-color);
       display: none;
       animation: fadeInUp 0.6s ease;
+      z-index: 10;
     }
 
     @keyframes fadeInUp {
@@ -162,9 +171,13 @@
 </head>
 
 <body>
-  <div class="stars"></div>
+  <!-- Video Background -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="https://files.catbox.moe/l7yzj5.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
 
-  <!-- Butang Kanan Atas Bulat -->
+  <!-- Butang Kanan Atas -->
   <div class="top-buttons">
     <button id="playMusicBtn" title="Mainkan Lagu 🎵">🎵</button>
     <button id="chatAdminBtn" title="Hubungi Admin 💬">💬</button>
@@ -181,6 +194,7 @@
     <a href="https://t.me/resitdamx_bot" target="_blank">@resitdamx_bot</a>
   </div>
 
+  <!-- Kandungan Utama -->
   <div class="container">
     <img src="https://files.catbox.moe/b5pfw2.jpg" alt="DAMX STORE Logo">
     <h1>DAMX STORE</h1>
