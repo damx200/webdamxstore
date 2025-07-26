@@ -73,7 +73,7 @@
       max-width: 300px;
     }
 
-    .btn-container a {
+    .btn-container a, .btn-container button {
       background-color: transparent;
       color: #00ffe7;
       border: 2px solid #00ffe7;
@@ -86,36 +86,18 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
+      cursor: pointer;
+      font-size: 1rem;
     }
 
-    .btn-container a:hover {
+    .btn-container a:hover, .btn-container button:hover {
       background-color: #00ffe7;
       color: #000;
       transform: scale(1.05);
     }
 
-    .btn-container a i {
+    .btn-container a i, .btn-container button i {
       font-size: 1.2rem;
-    }
-
-    /* MUSIC BUTTON */
-    #music-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #00ffe7;
-      color: #000;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      z-index: 999;
-      font-weight: bold;
-      box-shadow: 0 0 10px #00ffe7;
-    }
-
-    #music-toggle:hover {
-      background: white;
     }
 
     @media screen and (max-width: 480px) {
@@ -140,38 +122,9 @@
     });
   </script>
 
-  <!-- MUSIC BUTTON -->
-  <button id="music-toggle">🔊 Bunyi</button>
+  <!-- AUDIO -->
   <audio id="bg-music" src="https://files.catbox.moe/neg70e.mp3" loop></audio>
 
-  <script>
-    const music = document.getElementById("bg-music");
-    const btn = document.getElementById("music-toggle");
-    let playing = false;
-
-    btn.addEventListener("click", () => {
-      if (!playing) {
-        music.play();
-        btn.textContent = "⏸️ Henti";
-      } else {
-        music.pause();
-        btn.textContent = "🔊 Bunyi";
-      }
-      playing = !playing;
-    });
-
-    // Optional: auto play on load (bila dibenarkan)
-    window.addEventListener("click", () => {
-      if (!playing) {
-        music.play().then(() => {
-          playing = true;
-          btn.textContent = "⏸️ Henti";
-        }).catch(() => {});
-      }
-    }, { once: true });
-  </script>
-
-  <!-- MAIN CONTENT -->
   <div class="container">
     <img src="https://files.catbox.moe/b5pfw2.jpg" alt="DAMX STORE Logo">
     <h1>DAMX STORE</h1>
@@ -192,7 +145,42 @@
       <a href="https://kisahdamxstore.vercel.app" target="_blank">
         <i class="fas fa-book"></i> Kisah DAMX
       </a>
+
+      <!-- BUTTON LAGU -->
+      <button id="music-toggle"><i class="fas fa-music"></i> Bunyi Muzik</button>
+
+      <!-- BUTTON HUBUNGI ADMIN BOT -->
+      <a href="https://t.me/DAMXBOT?start=hubungi_admin" target="_blank">
+        <i class="fas fa-robot"></i> Hubungi Admin (Bot)
+      </a>
     </div>
   </div>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const toggleBtn = document.getElementById("music-toggle");
+    let playing = false;
+
+    toggleBtn.addEventListener("click", () => {
+      if (!playing) {
+        music.play();
+        toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Henti Muzik';
+      } else {
+        music.pause();
+        toggleBtn.innerHTML = '<i class="fas fa-music"></i> Bunyi Muzik';
+      }
+      playing = !playing;
+    });
+
+    // Optional: auto play on click somewhere
+    window.addEventListener("click", () => {
+      if (!playing) {
+        music.play().then(() => {
+          playing = true;
+          toggleBtn.innerHTML = '<i class="fas fa-pause"></i> Henti Muzik';
+        }).catch(() => {});
+      }
+    }, { once: true });
+  </script>
 </body>
 </html>
