@@ -59,18 +59,24 @@
       box-shadow: 0 0 25px var(--main-color);
     }
 
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px var(--main-color), -2px -2px #000; }
+      50% { text-shadow: -2px -2px var(--main-color), 2px 2px #000; }
+      100% { text-shadow: 2px -2px var(--main-color), -2px 2px #000; }
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
     h1 {
       font-size: 2.8rem;
       color: var(--main-color);
       margin: 25px 0 30px;
       text-shadow: 0 0 15px var(--main-color);
-      animation: glitch 2s infinite alternate;
-    }
-
-    @keyframes glitch {
-      0% { text-shadow: 2px 2px var(--main-color), -2px -2px #000; }
-      50% { text-shadow: -2px -2px var(--main-color), 2px 2px #000; }
-      100% { text-shadow: 2px -2px var(--main-color), -2px 2px #000; }
+      animation: glitch 2s infinite alternate, float 4s ease-in-out infinite;
     }
 
     .btn-container {
@@ -161,6 +167,7 @@
       font-size: 0.9rem;
       color: #aaa;
       text-shadow: 0 0 5px var(--main-color);
+      animation: float 6s ease-in-out infinite;
     }
 
     @media screen and (max-width: 480px) {
