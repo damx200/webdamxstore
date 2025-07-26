@@ -99,15 +99,19 @@
       font-size: 1.2rem;
     }
 
+    /* Music button kanan atas */
     #music-btn {
-      margin-top: 20px;
+      position: fixed;
+      top: 15px;
+      right: 15px;
       background-color: transparent;
       border: 2px solid #00ffe7;
       color: #00ffe7;
-      padding: 10px 20px;
+      padding: 10px 15px;
       border-radius: 25px;
-      cursor: pointer;
       font-weight: bold;
+      z-index: 999;
+      cursor: pointer;
       transition: 0.3s;
     }
 
@@ -123,6 +127,11 @@
 
       .btn-container a {
         font-size: 0.95rem;
+      }
+
+      #music-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -143,7 +152,7 @@
     <source src="https://ia800605.us.archive.org/7/items/gong-nekara/Gong%20Nekara.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
-  <button id="music-btn" onclick="toggleMusic()">Play Music</button>
+  <button id="music-btn" onclick="toggleMusic()">🔊 Play Music</button>
 
   <script>
     const music = document.getElementById("bg-music");
@@ -153,10 +162,10 @@
     function toggleMusic() {
       if (isPlaying) {
         music.pause();
-        btn.innerText = "Play Music";
+        btn.innerText = "🔊 Play Music";
       } else {
         music.play();
-        btn.innerText = "Pause Music";
+        btn.innerText = "⏸️ Pause Music";
       }
       isPlaying = !isPlaying;
     }
